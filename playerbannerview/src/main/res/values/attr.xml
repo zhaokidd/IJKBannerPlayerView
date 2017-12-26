@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BannerPlayerView">
+        <attr name="bpv_background_pic" format="reference" />
+        <attr name="bpv_title_text_size" format="dimension" />
+        <attr name="bpv_viewpager_offset" format="dimension" />
+        <attr name="bpv_title_text_color" format="color" />
+        <attr name="bpv_title_top_margin" format="dimension" />
+        <attr name="bpv_viewpager_margin" format="dimension" />
+        <attr name="bpv_banner_height" format="dimension" />
+        <attr name="bpv_viewpager_height" format="dimension" />
+        <attr name="bpv_foreground_pic" format="reference" />
+    </declare-styleable>
+    <attr name="banner_player_view_style" format="reference" />
+</resources>

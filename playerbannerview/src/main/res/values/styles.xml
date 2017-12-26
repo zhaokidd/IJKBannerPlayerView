@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DefaultBannerPlayerView">
+        <item name="bpv_background_pic">@drawable/bg_vip_bg</item>
+        <item name="bpv_title_text_size">16sp</item>
+        <item name="bpv_viewpager_offset">10dp</item>
+        <item name="bpv_title_text_color">#FFFFFF</item>
+        <item name="bpv_title_top_margin">10dp</item>
+        <item name="bpv_viewpager_margin">20dp</item>
+        <item name="bpv_viewpager_height">165dp</item>
+        <item name="bpv_banner_height">270dp</item>
+    </style>
+</resources>
