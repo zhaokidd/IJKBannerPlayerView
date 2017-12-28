@@ -2,6 +2,10 @@ package com.android.zy.myapplication;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.widget.ScrollView;
 
 import com.android.zy.myapplication.adapter.MyBannerPlayerAdapter;
 import com.android.zy.myapplication.model.MyMediaBean;
@@ -16,10 +20,12 @@ import java.util.List;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends Activity {
-    //    private final static String TEST_MEDIA_URL = "http://cds-wotv.jstv.com/mp4/70013872_700.mp4?token=EDC475629F04DBB0?auth_key=1514278897-0-0-0d70a7f473e39c0770cb1b37e6357fbd";
-    private final static String TEST_MEDIA_URL = "";
+    private final static String TAG = "MainActivity";
+    private final static String TEST_MEDIA_URL = "http://cds-wotv.jstv.com/mp4/70013872_700.mp4?token=EDC475629F04DBB0?auth_key=1514278897-0-0-0d70a7f473e39c0770cb1b37e6357fbd";
+    //    private final static String TEST_MEDIA_URL = "";
     private BannerPlayerView<MyMediaBean> mBannerPlayerView = null;
     private BannerPlayerAdapter<MyMediaBean> mBannerPlayerAdapter = null;
+    private MyScrollView mScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,10 @@ public class MainActivity extends Activity {
         mBannerPlayerView.bindAdapter(mBannerPlayerAdapter);
         //notify change
         mBannerPlayerView.notifyDataSetChanged(produceFakeData());
+
+        mScrollView = findViewById(R.id.scrollView);
+        mScrollView.setmBannerLocationListener(mBannerPlayerView);
+
     }
 
     private List<MyMediaBean> produceFakeData() {

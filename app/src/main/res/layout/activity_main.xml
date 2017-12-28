@@ -6,18 +6,42 @@
     android:layout_height="match_parent"
     tools:context="com.android.zy.myapplication.MainActivity">
 
-    <com.android.zy.playerbannerview.view.BannerPlayerView
-        android:id="@+id/banner_player_view"
+
+    <com.android.zy.myapplication.MyScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:bpv_background_pic="@drawable/bg_vip_bg"
-        app:bpv_banner_height="270dp"
-        app:bpv_foreground_pic="@drawable/test_fore_ground"
-        app:bpv_title_text_color="#FFFFEE77"
-        app:bpv_title_text_size="14sp"
-        app:bpv_title_top_margin="10dp"
-        app:bpv_viewpager_height="165dp"
-        app:bpv_viewpager_margin="20dp"
-        app:bpv_viewpager_offset="10dp" />
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.android.zy.playerbannerview.view.BannerPlayerView
+                android:id="@+id/banner_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:bpv_background_pic="@drawable/bg_vip_bg"
+                app:bpv_banner_height="270dp"
+                app:bpv_foreground_pic="@drawable/test_fore_ground"
+                app:bpv_title_text_color="#FFFFEE77"
+                app:bpv_title_text_size="14sp"
+                app:bpv_title_top_margin="10dp"
+                app:bpv_viewpager_height="165dp"
+                app:bpv_viewpager_margin="20dp"
+                app:bpv_viewpager_offset="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/banner_player_view"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1300dp"
+                android:text="bottom"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </com.android.zy.myapplication.MyScrollView>
+
 </RelativeLayout>

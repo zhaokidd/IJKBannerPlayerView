@@ -27,6 +27,7 @@ import com.android.zy.playerbannerview.event.ScreenLockEvent;
 import com.android.zy.playerbannerview.event.SwitchFragmentEvent;
 import com.android.zy.playerbannerview.helper.BannerIJKPlayerHelper;
 import com.android.zy.playerbannerview.helper.BannerTextureHelper;
+import com.android.zy.playerbannerview.listener.IBannerLocationListener;
 import com.android.zy.playerbannerview.model.IPlayerMediaData;
 import com.android.zy.playerbannerview.util.DensityUtil;
 import com.android.zy.playerbannerview.util.ImageUtil;
@@ -44,7 +45,10 @@ import tv.danmaku.ijk.media.player.IMediaPlayer;
  * Created by zy on 2017/11/30.
  */
 
-public class BannerPlayerView<T extends IPlayerMediaData> extends FrameLayout implements BannerIJKPlayerHelper.OnBannerPlayerListener, BannerTextureHelper.onTextureViewChangeListener {
+public class BannerPlayerView<T extends IPlayerMediaData> extends FrameLayout implements
+        BannerIJKPlayerHelper.OnBannerPlayerListener,
+        BannerTextureHelper.onTextureViewChangeListener,
+        IBannerLocationListener {
     private final static String TAG = "BannerPlayerView";
     private final static int ID_VIEWPAGER = 10008;
     private final static int DELAY_START_PLAY = 100;
@@ -179,9 +183,8 @@ public class BannerPlayerView<T extends IPlayerMediaData> extends FrameLayout im
         textViewParams.topMargin = DensityUtil.dip2px(getContext(), mTitleTopMargin);
         tvMediaTitle.setLayoutParams(textViewParams);
         rootLayout.addView(tvMediaTitle, textViewParams);
-
         addView(rootLayout);
-
+//        setOnScrollChangeListener(mScrollListener);
         mIjkHelper = new BannerIJKPlayerHelper(getContext(), this);
     }
 
@@ -483,4 +486,14 @@ public class BannerPlayerView<T extends IPlayerMediaData> extends FrameLayout im
         }
     }
 
+    @Override
+    public void onPositionChanged() {
+        int[] locations = new int[2];
+        getLocationInWindow(locations);
+        if (locations[1] + mBannerHeight < 20) {
+            mIjkHelper.startOrPausePlay(false);
+        } else if (locations[1] > 0) {
+            mIjkHelper.startOrPausePlay(true);
+        }
+    }
 }
