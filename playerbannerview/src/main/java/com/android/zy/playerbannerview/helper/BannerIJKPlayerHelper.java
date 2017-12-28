@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceView;
 
+import com.android.zy.playerbannerview.util.NetWorkUtil;
 import com.android.zy.playerbannerview.util.SharedPreferencesUtil;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -68,7 +69,7 @@ public class BannerIJKPlayerHelper {
         public void onCompletion(IMediaPlayer iMediaPlayer) {
             Log.i(TAG, "onCompletion");
             //do nothing ,loop the mediaplayer by call MediaPlayer.setLooping(true)
-            if (iMediaPlayer != null) {
+            if (iMediaPlayer != null && NetWorkUtil.isNetWorkConnected(mContext)) {
                 Log.i(TAG, "new loop");
                 iMediaPlayer.stop();
                 iMediaPlayer.prepareAsync();
